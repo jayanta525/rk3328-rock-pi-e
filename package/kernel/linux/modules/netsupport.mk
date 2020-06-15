@@ -968,6 +968,25 @@ endef
 
 $(eval $(call KernelPackage,tcp-bbr))
 
+define KernelPackage/tcp-nanqinlang
+  SUBMENU:=$(NETWORK_SUPPORT_MENU)
+  TITLE:=BBR NANQINLANG TCP congestion control
+  DEPENDS:=+LINUX_4_9:kmod-sched
+  KCONFIG:= \
+	CONFIG_TCP_CONG_ADVANCED=y \
+	CONFIG_TCP_CONG_NANQINLANG
+  FILES:=$(LINUX_DIR)/net/ipv4/tcp_nanqinlang.ko
+  AUTOLOAD:=$(call AutoLoad,74,tcp_nanqinlang)
+endef
+
+define KernelPackage/tcp-nanqinlang/description
+ Kernel module for BBR (Bottleneck Bandwidth and RTT) TCP congestion
+ control. It requires the fq ("Fair Queue") pacing packet scheduler.
+ For kernel 4.13+, TCP internal pacing is implemented as fallback.
+endef
+
+$(eval $(call KernelPackage,tcp-nanqinlang))
+
 
 define KernelPackage/ax25
   SUBMENU:=$(NETWORK_SUPPORT_MENU)

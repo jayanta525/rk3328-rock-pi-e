@@ -1,0 +1,54 @@
+From 31b8e8592f6663c0937d1408f1fd6ed566fbde5c Mon Sep 17 00:00:00 2001
+From: Chen-Yu Tsai <wens@csie.org>
+Date: Sun, 17 Jan 2021 18:07:09 +0800
+Subject: [PATCH] dt-bindings: arm: rockchip: Add Radxa ROCK Pi E
+
+Radxa ROCK Pi E is a router oriented SBC based on Rockchip's RK3328 SoC.
+As the official wiki page puts it, "E for Ethernets".
+
+It features the RK3328 SoC, gigabit and fast Ethernet RJ45 ports, both
+directly served by Ethernet controllers in the SoC, a USB 3.0 host port,
+a power-only USB type-C port, a 3.5mm headphone jack for audio output,
+two LEDs, a 40-pin Raspberry Pi style GPIO header, and optional WiFi+BT
+and PoE header.
+
+The board comes in multiple configurations, differing in the amount of
+onboard RAM, the level of WiFi+BT (none, 802.11n 2.4GHz, or 802.11ac
+2.4 GHz & 5 GHz), and whether PoE is supported or not. These variants
+can all share the same device tree.
+
+The USB 2.0 OTG controller is available on the 40-pin header. This is
+not enabled in the device tree, since it is possible to use it in a
+host-only configuration, or in OTG mode with an extra pin from the
+header as the ID pin.
+
+The device tree is based on the one of the Rock64, with various parts
+modified to match the ROCK Pi E, and some parts updated to newer styles,
+such as the gmac2io node's mdio sub-node.
+
+Add a compatible string for the new board.
+
+Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+Link: https://lore.kernel.org/r/20210117100710.4857-3-wens@kernel.org
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ef4544ad6f82d..8a2dd9f1cff25 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -467,6 +467,11 @@ properties:
+           - const: radxa,rockpi4
+           - const: rockchip,rk3399
+ 
++      - description: Radxa ROCK Pi E
++        items:
++          - const: radxa,rockpi-e
++          - const: rockchip,rk3328
++
+       - description: Radxa ROCK Pi N8
+         items:
+           - const: radxa,rockpi-n8

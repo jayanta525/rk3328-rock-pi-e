@@ -1,3 +1,12 @@
+# Update: ROCK Pi E is included in the official OpenWrt sources. This repository will be archived.
+Commit: [rockchip: add support for Radxa ROCK Pi E · openwrt/openwrt@1b15cb2 (github.com)](https://github.com/openwrt/openwrt/commit/1b15cb21db6dafed9a43bb3258e6fa3481080192)
+
+Downloads builds: [Index of /snapshots/targets/rockchip/armv8/ (openwrt.org)](https://downloads.openwrt.org/snapshots/targets/rockchip/armv8/)
+
+
+
+
+
 ![OpenWrt logo](include/logo.png)
 
 OpenWrt Project is a Linux operating system targeting embedded devices. Instead
